@@ -70,7 +70,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "User",
-      tableName: "users",
+      tableName: "users", //Users
       underscored: true
     }
   );
