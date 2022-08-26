@@ -41,8 +41,8 @@ module.exports.updateUser =  async (req,res,next) => {
 
 module.exports.updateUserInstance =  async (req,res,next) => {
   try {
-    const {params:{id}, body} = req;
-    const userInstance = await User.findByPk(id);
+    const {body, userInstance} = req;
+    //const userInstance = await User.findByPk(id);
     const updatedUser = await userInstance.update(body, {
       returning:true
     });
@@ -55,8 +55,8 @@ module.exports.updateUserInstance =  async (req,res,next) => {
 
 module.exports.deleteUserInstance =  async (req,res,next) => {
   try {
-    const {params:{id}} = req;
-    const userInstance = await User.findByPk(id);
+    const {userInstance} = req;
+    //const userInstance = await User.findByPk(id);
     userInstance.password = undefined;
     const [result] = await userInstance.destroy();
     res.status(200).send({data: userInstance})
