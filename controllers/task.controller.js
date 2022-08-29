@@ -13,8 +13,10 @@ module.exports.createTask = async (req, res, next)=>{
 
 module.exports.getUserTasks = async (req, res, next)=>{
   try {
-    const {userInstance} = req;
-    const tasks = await userInstance.getTasks();
+    const {userInstance, pagination} = req;
+    const tasks = await userInstance.getTasks({
+      ...pagination
+    });
     res.status(200).send({data: tasks})
   } catch (error) {
     next(error)
