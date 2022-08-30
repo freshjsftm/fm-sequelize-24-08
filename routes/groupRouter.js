@@ -4,5 +4,4 @@ const groupRouter = Router();
 
 groupRouter.post('/',GroupController.createGroupByUser);
 
-
 module.exports = groupRouter;

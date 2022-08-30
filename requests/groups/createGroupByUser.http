@@ -2,6 +2,7 @@ POST http://localhost:3000/api/groups HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "group 1",
-  "idUser": 2
+  "name": "group 8",
+  "theme":"working",
+  "userId": 12
 }
