@@ -1,16 +1,11 @@
 const express = require("express");
-const { ValidationError } = require("sequelize");
 const router = require("./routes");
+const { errorHandler } = require("./middlewares/error.handler.mw");
 
 const app = express();
+app.use(express.static('public'));
 app.use(express.json());
 app.use("/api", router);
-
-app.use((err, req, res, next) => {
-  const status = err.status || 500;
-  res.status(status).send({
-    error: [{ message: err.message || 'Internal Server Error'}],
-  });
-});
+app.use(errorHandler);
 
 module.exports = app;
