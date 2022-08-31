@@ -18,5 +18,6 @@ const upload = multer({ storage });
 groupRouter.get("/users/:userId", GroupController.getAllGroupsByUser);
 groupRouter.post("/", GroupController.createGroupByUser);
 groupRouter.post("/:groupId/image", upload.single("image"), GroupController.createImageToGroup);
+groupRouter.put("/:groupId", GroupController.addUserToGroup);
 
 module.exports = groupRouter;
