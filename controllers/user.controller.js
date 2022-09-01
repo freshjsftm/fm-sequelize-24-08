@@ -12,7 +12,7 @@ module.exports.createUser = async (req, res, next) => {
     }
     const user = createdUser.get();
     user.password = undefined;
-    res.status(201).send({ data: user });
+    res.status(201).send({ data: [user] });
   } catch (error) {
     next(error);
   }
