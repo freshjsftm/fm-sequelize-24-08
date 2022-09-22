@@ -1,5 +1,5 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Task extends Model {
     /**
@@ -7,43 +7,43 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate (models) {
       Task.belongsTo(models.User, {
-        foreignKey: "userId" //user_id
+        foreignKey: 'userId', //user_id
       });
     }
   }
   Task.init(
     {
-      body: { 
+      body: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate:{
+        validate: {
           notNull: true,
-          notEmpty:true
-        }
-       },
+          notEmpty: true,
+        },
+      },
       isDone: {
-        field:"is_done", 
+        field: 'is_done',
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false,
-        validate:{
-          notNull: true
-        }
-       },
-      deadLine: { 
-        field:"dead_line",
+        validate: {
+          notNull: true,
+        },
+      },
+      deadLine: {
+        field: 'dead_line',
         type: DataTypes.DATE,
-        validate:{
-          isDate:true
-        }
-       },
+        validate: {
+          isDate: true,
+        },
+      },
     },
     {
       sequelize,
-      modelName: "Task",
-      tableName: "tasks",
+      modelName: 'Task',
+      tableName: 'tasks',
       underscored: true,
     }
   );

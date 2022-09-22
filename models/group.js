@@ -1,5 +1,5 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Group extends Model {
     /**
@@ -7,10 +7,10 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate (models) {
       Group.belongsToMany(models.User, {
-        through:"users_to_groups",
-        foreignKey: "groupId"
+        through: 'users_to_groups',
+        foreignKey: 'groupId',
       });
     }
   }
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       imagePath: {
-        field:"image_path",
+        field: 'image_path',
         type: DataTypes.TEXT,
       },
       description: {
@@ -29,13 +29,13 @@ module.exports = (sequelize, DataTypes) => {
       },
       theme: {
         type: DataTypes.STRING,
-      }
+      },
     },
     {
       sequelize,
-      modelName: "Group",
-      tableName: "groups",
-      underscored: true
+      modelName: 'Group',
+      tableName: 'groups',
+      underscored: true,
     }
   );
   return Group;

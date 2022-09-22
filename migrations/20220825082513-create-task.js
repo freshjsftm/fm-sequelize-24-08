@@ -1,53 +1,53 @@
 'use strict';
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.createTable('tasks', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       userId: {
-        field:"user_id",
+        field: 'user_id',
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'users'
+            tableName: 'users',
           },
-          key: 'id'
+          key: 'id',
         },
         allowNull: false,
-        onDelete: "cascade",
-        onUpdate:"restrict"
+        onDelete: 'cascade',
+        onUpdate: 'restrict',
       },
       body: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       isDone: {
-        field:"is_done",
+        field: 'is_done',
         allowNull: false,
         defaultValue: false,
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       deadLine: {
-        field:"dead_line",
-        type: Sequelize.DATE
+        field: 'dead_line',
+        type: Sequelize.DATE,
       },
       createdAt: {
-        field:"created_at",
+        field: 'created_at',
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
-        field:"updated_at",
+        field: 'updated_at',
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down (queryInterface, Sequelize) {
     await queryInterface.dropTable('tasks');
-  }
+  },
 };

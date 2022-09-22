@@ -4,8 +4,6 @@ Content-Type: application/json
 {
   "firstName": "Elon3",
   "lastName": "Musk",
-  "email": "musk72@gmail.com",
-  "password":"musk123",
-  "birthday":"1951-06-28",
-  "isMale":true
+  "email": "musk57472@gmail.com"
+
 }

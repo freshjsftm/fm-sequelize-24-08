@@ -1,14 +1,13 @@
-const createError = require("http-errors");
-const { Op } = require("sequelize");
-const { User } = require("../models");
+const createError = require('http-errors');
+const { Op } = require('sequelize');
+const { User } = require('../models');
 
 module.exports.createUser = async (req, res, next) => {
   try {
     const { body } = req;
     const createdUser = await User.create(body);
-    if(!createdUser){
-      const error = createError(400, "Try again!")
-      next(error)
+    if (!createdUser) {
+      next(createError(400, 'Try again!'));
     }
     const user = createdUser.get();
     user.password = undefined;
@@ -32,7 +31,7 @@ module.exports.getAllUsers = async (req, res, next) => {
     const { pagination } = req;
     const users = await User.findAll({
       attributes: {
-        exclude: ["password"],
+        exclude: ['password'],
       },
       ...pagination,
     });
