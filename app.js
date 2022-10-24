@@ -3,7 +3,7 @@ const cors = require('cors');
 const router = require('./routes');
 const {
   errorHandler,
-  validationErrorHandler,
+  sequelizeErrorHandler,
 } = require('./middlewares/error.handler.mw');
 
 const app = express();

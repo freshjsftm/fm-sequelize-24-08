@@ -20,6 +20,7 @@ const getTestUser = () => ({
 const user = getTestUser();
 
 const userResponseSuccess = yup.object({
+  id: yup.number(),
   firstName: yup.string().required(),
   lastName: yup.string().required(),
   email: yup
@@ -35,6 +36,19 @@ const userResponseSuccess = yup.object({
 
 const responseSuccess = yup.object({
   data: yup.array().of(userResponseSuccess),
+});
+
+//GET http://localhost:3000/api/users/3 HTTP/1.1
+describe('get one user test:', () => {
+  test('one user get success 200', async () => {
+    const response = await appRequest.get('/api/users/1');
+    expect(response.statusCode).toBe(200);
+    expect(userResponseSuccess.isValidSync(response.body.data)).toBe(true);
+  });
+  test('one user get error - not found 404', async () => {
+    const response = await appRequest.get('/api/users/1000');
+    expect(response.statusCode).toBe(404);
+  });
 });
 
 describe('sign up test:', () => {
